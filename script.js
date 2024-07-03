@@ -7,7 +7,8 @@ function hesapla() {
     const komite6 = parseFloat(document.getElementById('komite6').value);
     const final1 = parseFloat(document.getElementById('final1').value);
     const final2 = parseFloat(document.getElementById('final2').value);
-
+    const ihu = parseFloat(document.grtElementbyId('ihu').value);
+    
     const krediler = {
         komite1: 8,
         komite2: 13,
@@ -19,8 +20,6 @@ function hesapla() {
         final2: 27,
         ihu: 4
     };
-
-    const ihuNotu = 100;
 
     const komiteToplamKredi = krediler.komite1 + krediler.komite2 + krediler.komite3 + krediler.komite4 + krediler.komite5 + krediler.komite6 + krediler.ihu;
     const finalToplamKredi = krediler.final1 + krediler.final2;
@@ -40,13 +39,14 @@ function hesapla() {
         (final2 * krediler.final2)
     ) / finalToplamKredi;
 
-    const yilSonuOrtalamasi = (komiteOrtalama * 0.6) + (finalOrtalama * 0.4);
-    const sonucElement = document.getElementById('sonuc');
-    sonucElement.innerText = Yıl Sonu Ortalamanız: ${yilSonuOrtalamasi.toFixed(2)};
+    const yilSonuOrtalamasi = (komiteOrtalama * 0.5) + (finalOrtalama * 0.5);
 
+    let sonucMetni = "";
     if (yilSonuOrtalamasi >= 59.5) {
-        sonucElement.innerText += "\n3. Sınıfa merhaba!";
+        sonucMetni = `Tebrikler :) Yıl Sonu Ortalamanız: ${yilSonuOrtalamasi.toFixed(2)}`;
     } else {
-        sonucElement.innerText += "\nMaalesef bu notlar sınıfı geçmek için yetersiz :(";
+        sonucMetni = `Üzgünüm :( Yıl Sonu Ortalamanız: ${yilSonuOrtalamasi.toFixed(2)}`;
     }
+
+    document.getElementById('sonuc').innerText = sonucMetni;
 }
